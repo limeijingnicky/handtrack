@@ -44,7 +44,7 @@ class Handdetector:
                     lmlist.append([id,cx,cy])
 
                     if draw:
-                        cv.circle(img,(cx,cy),15,(255,0,255),cv.FILLED)
+                        cv.circle(img,(cx,cy),5,(255,0,255),cv.FILLED)
         else:
             print('the handno is over range')
 
@@ -65,11 +65,10 @@ def main():
         success, img = cap.read()
         img=detector.findhands(img)
         position=detector.findposition(img)
-        print(position)
 
-        # if len(position) >= handno:
-        #     #得到第0个关节的位置
-        #     print(position)
+        if position :
+            #得到第0个关节的位置
+            print(position)
 
         # 计算帧
         cTime  = time.time()
@@ -85,3 +84,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
